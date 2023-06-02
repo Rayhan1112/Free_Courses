@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ProfileFragment">
+
+    <com.github.ybq.android.spinkit.SpinKitView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/_80sdp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        app:SpinKit_Color="@color/purple_200"
+        android:id="@+id/progress"
+        />
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:text="Loading.... "
+        android:id="@+id/visibletext"
+        android:textSize="@dimen/_20ssp"
+        android:layout_marginTop="@dimen/_420sdp"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/progress">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <ImageView
+            android:layout_width="@dimen/_70sdp"
+            android:layout_height="@dimen/_70sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/ic_baseline_person_24"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/proflayout12"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+            android:layout_width="@dimen/_260sdp"
+            android:layout_height="@dimen/_44sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginBottom="@dimen/_2sdp"
+            android:layout_gravity="center"
+            app:startIconDrawable="@drawable/ic_baseline_person_24">
+
+            <EditText
+                android:id="@+id/namefixed"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_43sdp"
+                android:baselineAligned="false"
+                android:hint="Name"
+                android:textColorHint="#616161"
+                tools:ignore="SpeakableTextPresentCheck" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/proflayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+        android:layout_width="@dimen/_260sdp"
+        android:layout_height="@dimen/_60sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginBottom="@dimen/_2sdp"
+        android:layout_gravity="center"
+        app:startIconDrawable="@drawable/ic_baseline_verified_user_24">
+
+        <EditText
+            android:id="@+id/usernamefixed"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:baselineAligned="false"
+            android:hint="User Name"
+            android:background="#989898"
+            android:editable="false"
+            android:textColorHint="#616161"
+            tools:ignore="SpeakableTextPresentCheck" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_20sdp"
+            android:text="Username Cannot be Changed"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textColor="#FF0000"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/proflayout2"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+        android:layout_width="@dimen/_260sdp"
+        android:layout_height="@dimen/_44sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginBottom="@dimen/_2sdp"
+        android:layout_gravity="center"
+        app:startIconDrawable="@drawable/ic_baseline_mail_24">
+
+        <EditText
+            android:id="@+id/pmail"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_43sdp"
+            android:baselineAligned="false"
+            android:hint="Mail"
+            android:textColorHint="#616161"
+            tools:ignore="SpeakableTextPresentCheck" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/proflayout3"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+            android:layout_width="@dimen/_260sdp"
+            android:layout_height="@dimen/_44sdp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_marginBottom="@dimen/_2sdp"
+            android:layout_gravity="center"
+            app:passwordToggleEnabled="true"
+            app:startIconDrawable="@drawable/ic_baseline_verified_user_24">
+
+            <EditText
+                android:id="@+id/ppass"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_43sdp"
+                android:baselineAligned="false"
+                android:hint="Password"
+                android:textColorHint="#616161"
+                tools:ignore="SpeakableTextPresentCheck"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/proflayout6"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+            android:layout_width="@dimen/_260sdp"
+            android:layout_height="@dimen/_44sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginBottom="@dimen/_2sdp"
+            android:layout_gravity="center"
+            app:startIconDrawable="@drawable/ic_baseline_person_24">
+
+            <EditText
+                android:id="@+id/college"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_43sdp"
+                android:baselineAligned="false"
+                android:hint="College Name"
+                android:textColorHint="#616161"
+                tools:ignore="SpeakableTextPresentCheck" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/proflayout7"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+            android:layout_width="@dimen/_260sdp"
+            android:layout_height="@dimen/_44sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginBottom="@dimen/_2sdp"
+            android:layout_gravity="center"
+            app:startIconDrawable="@drawable/ic_baseline_person_24">
+
+            <EditText
+                android:id="@+id/course"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_43sdp"
+                android:baselineAligned="false"
+                android:hint="Course Name"
+                android:textColorHint="#616161"
+                tools:ignore="SpeakableTextPresentCheck" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/pbutton"
+            android:layout_width="@dimen/_180sdp"
+            android:layout_height="wrap_content"
+            android:text="Update"
+            android:clickable="true"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_marginBottom="@dimen/_70sdp"
+            android:layout_gravity="center"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+
+
+
+
+
+    </LinearLayout>
+    </ScrollView>
+    </RelativeLayout>
+
+

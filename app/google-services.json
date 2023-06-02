@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "641524082373",
+    "firebase_url": "https://userdata-e47a8-default-rtdb.firebaseio.com",
+    "project_id": "userdata-e47a8",
+    "storage_bucket": "userdata-e47a8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:641524082373:android:25ff5a83ca2ed4bdbb72ac",
+        "android_client_info": {
+          "package_name": "com.freecourses"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "641524082373-4pbldgsgn7sd19oejlae0fs5s8lcdvmd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3_BvRj8kzAhc4cJQjBu3z2pU3LHxFHHM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "641524082373-4pbldgsgn7sd19oejlae0fs5s8lcdvmd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

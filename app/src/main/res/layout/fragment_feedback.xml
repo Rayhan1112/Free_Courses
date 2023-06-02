@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#f0f0f0"
+    tools:context=".FeedbackFragment">
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="@dimen/_280sdp"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:layout_gravity="center_horizontal"
+        app:cardElevation="@dimen/_18sdp"
+        android:layout_marginTop="@dimen/_130sdp"
+        app:cardCornerRadius="@dimen/_15sdp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            tools:ignore="ExtraText">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Feedback Form"
+                android:textStyle="bold"
+                android:textSize="@dimen/_25sdp"
+                android:letterSpacing="0.1"
+                android:shadowDx="3"
+                android:shadowDy="3"
+                android:shadowColor="@color/white"
+                android:shadowRadius="2"
+                android:id="@+id/text1"
+                android:gravity="center"
+                android:layout_marginTop="@dimen/_17sdp"
+                android:layout_marginBottom="@dimen/_34sdp"
+                android:textColor="@color/black"/>
+
+
+
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layout1"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="@dimen/_260sdp"
+                android:layout_height="@dimen/_53sdp"
+                android:layout_gravity="center"
+                app:startIconDrawable="@drawable/ic_baseline_person_24">
+
+                <EditText
+                    android:id="@+id/fname"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_40sdp"
+                    android:baselineAligned="false"
+                    android:hint="Name"
+                    android:textColorHint="#616161"
+                    tools:ignore="SpeakableTextPresentCheck" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layout2"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="@dimen/_260sdp"
+                android:layout_height="@dimen/_80sdp"
+                android:layout_marginTop="30dp"
+                android:layout_gravity="center">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/suggestion"
+                    android:layout_width="match_parent"
+                    android:layout_height="94dp"
+                    android:layout_marginTop="30dp"
+                    android:baselineAligned="false"
+                    android:hint="Suggestion or Feedback"
+                    android:textColorHint="#616161" />
+            </com.google.android.material.textfield.TextInputLayout>
+           \
+
+
+            <soup.neumorphism.NeumorphButton
+                android:layout_width="200dp"
+                android:layout_height="@dimen/_48sdp"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="30dp"
+                android:layout_marginLeft="90dp"
+                android:clickable="true"
+                android:gravity="center"
+               android:id="@+id/submit"
+                android:text="Subit Feedback"
+                android:textStyle="bold"
+                android:textSize="@dimen/_12ssp"
+                android:textColor="@color/purple_500"
+                app:neumorph_backgroundColor="@color/design_default_color_secondary"
+                tools:ignore="HardcodedText" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

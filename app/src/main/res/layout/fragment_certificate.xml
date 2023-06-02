@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".Certificate">
+
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        tools:ignore="SpeakableTextPresentCheck">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:scrollbars="none">
+
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/certificate1"
+                android:layout_width="340dp"
+                android:layout_height="160dp"
+                android:layout_gravity="center"
+                android:layout_margin="20dp"
+                android:clickable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:onClick="certi1"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="10dp"
+                tools:ignore="DuplicateClickableBoundsCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck">
+
+                <ImageView
+                    android:layout_width="340dp"
+                    android:layout_height="160dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/cjava"
+                    tools:ignore="SpeakableTextPresentCheck" />
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/certificate2"
+                android:layout_width="340dp"
+                android:layout_height="160dp"
+                android:layout_gravity="center"
+                android:layout_margin="20dp"
+                android:clickable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:onClick="certi2"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="10dp"
+                tools:ignore="DuplicateClickableBoundsCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck">
+
+                <ImageView
+                    android:layout_width="340dp"
+                    android:layout_height="160dp"
+                    android:layout_marginTop="3dp"
+                    android:scaleType="centerCrop"
+                    android:padding="7dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/cpython"
+                    tools:ignore="SpeakableTextPresentCheck" />
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/certificate3"
+                android:layout_width="340dp"
+                android:layout_height="160dp"
+                android:layout_gravity="center"
+                android:layout_margin="20dp"
+                android:clickable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:onClick="certi3"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="10dp"
+                tools:ignore="DuplicateClickableBoundsCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck">
+
+                <ImageView
+                    android:layout_width="340dp"
+                    android:layout_height="160dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/csql"
+                    tools:ignore="SpeakableTextPresentCheck" />
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/certificate4"
+                android:layout_width="340dp"
+                android:layout_height="160dp"
+                android:layout_gravity="center"
+                android:layout_margin="20dp"
+                android:clickable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:onClick="certi4"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="10dp"
+                tools:ignore="DuplicateClickableBoundsCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck">
+
+                <ImageView
+                    android:layout_width="340dp"
+                    android:layout_height="160dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/crobotic"
+                    tools:ignore="SpeakableTextPresentCheck" />
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/certificate10"
+                android:layout_width="340dp"
+                android:layout_height="160dp"
+                android:layout_gravity="center"
+                android:layout_margin="20dp"
+                android:clickable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:onClick="certi5"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="10dp"
+                tools:ignore="DuplicateClickableBoundsCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck">
+
+                <ImageView
+                    android:layout_width="340dp"
+                    android:layout_height="160dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/iot"
+                    tools:ignore="SpeakableTextPresentCheck" />
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/certificate11"
+                android:layout_width="340dp"
+                android:layout_height="160dp"
+                android:layout_gravity="center"
+                android:layout_margin="20dp"
+                android:clickable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:onClick="certi6"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="10dp"
+                tools:ignore="DuplicateClickableBoundsCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck">
+
+                <ImageView
+                    android:layout_width="340dp"
+                    android:layout_height="160dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/cyber"
+                    tools:ignore="SpeakableTextPresentCheck" />
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/certificate12"
+                android:layout_width="340dp"
+                android:layout_height="160dp"
+                android:layout_gravity="center"
+                android:layout_margin="20dp"
+                android:clickable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:onClick="certi7"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="10dp"
+                tools:ignore="DuplicateClickableBoundsCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck">
+
+                <ImageView
+                    android:layout_width="340dp"
+                    android:layout_height="160dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/cjavascripe"
+                    tools:ignore="SpeakableTextPresentCheck" />
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/certificate8"
+                android:layout_width="340dp"
+                android:layout_height="160dp"
+                android:layout_gravity="center"
+                android:layout_margin="20dp"
+                android:clickable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:onClick="certi8"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="10dp"
+                tools:ignore="DuplicateClickableBoundsCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck">
+
+                <ImageView
+                    android:layout_width="340dp"
+                    android:layout_height="160dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/javafull"
+                    tools:ignore="SpeakableTextPresentCheck" />
+            </androidx.cardview.widget.CardView> <androidx.cardview.widget.CardView
+            android:id="@+id/certificate9"
+            android:layout_width="340dp"
+            android:layout_height="160dp"
+            android:layout_gravity="center"
+            android:layout_margin="20dp"
+            android:clickable="true"
+            android:foreground="?attr/selectableItemBackground"
+            android:onClick="certi9"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="10dp"
+            tools:ignore="DuplicateClickableBoundsCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck">
+
+            <ImageView
+                android:layout_width="340dp"
+                android:layout_height="160dp"
+                android:layout_gravity="center"
+                android:src="@drawable/flutter"
+                tools:ignore="SpeakableTextPresentCheck" />
+        </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

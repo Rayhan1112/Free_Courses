@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.slideshow.SlideshowFragment">
+
+    <LinearLayout
+        android:layout_width="@dimen/_450sdp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/wave_3">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="About"
+            android:textSize="@dimen/_30sdp"
+            android:layout_marginLeft="@dimen/_120sdp"
+            android:layout_marginVertical="@dimen/_30sdp"
+            android:textStyle="bold"
+            android:textColor="@color/white"/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/about1"
+        android:textSize="@dimen/_15sdp"
+        android:padding="@dimen/_20sdp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/about2"
+        android:textSize="@dimen/_15sdp"
+        android:padding="@dimen/_11sdp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/keypoints"
+        android:textColor="#F40000"
+        android:gravity="center"
+        android:textSize="@dimen/_17sdp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/time_and_money_saving"
+        android:textSize="@dimen/_15sdp"
+        android:padding="@dimen/_10sdp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/free_certification_course_available"
+        android:textSize="@dimen/_15sdp"
+        android:padding="@dimen/_10sdp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="50+ Free Course"
+        android:textSize="@dimen/_15sdp"
+        android:padding="@dimen/_10sdp"/>
+
+
+
+</LinearLayout>

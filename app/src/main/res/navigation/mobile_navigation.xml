@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.freecourses.ui.home.HomeFragment"
+        android:label="Learn Top Free Courses"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_gallery"
+        android:name="com.freecourses.ui.gallery.GalleryFragment"
+        android:label="Web Development"
+        tools:layout="@layout/fragment_gallery" />
+
+    <fragment
+        android:id="@+id/nav_slideshow"
+        android:name="com.freecourses.ui.slideshow.SlideshowFragment"
+        android:label="About"
+        tools:layout="@layout/fragment_slideshow" />
+
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.freecourses.ProfileFragment"
+        android:label="My Account"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/certificate"
+        android:name="com.freecourses.Certificate"
+        android:label="Earn Free Certificate"
+        tools:layout="@layout/fragment_certificate" />
+    <fragment
+        android:id="@+id/feedbackFragment"
+        android:name="com.freecourses.FeedbackFragment"
+        android:label="FeedBack"
+        tools:layout="@layout/fragment_feedback" />
+    <fragment
+        android:id="@+id/logoutFragment2"
+        android:name="com.freecourses.logoutFragment"
+        android:label="Logout"
+        tools:layout="@layout/fragment_logout" />
+
+</navigation>

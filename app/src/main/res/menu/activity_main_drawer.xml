@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/profileFragment"
+            android:icon="@drawable/ic_baseline_person_24"
+            android:title="My Account"/>
+
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_baseline_app_settings_alt_24"
+            android:title="Software Courses" />
+
+        <item
+            android:id="@+id/nav_gallery"
+            android:icon="@drawable/web"
+            android:title="Web Development" />
+
+        <item
+            android:id="@+id/certificate"
+            android:icon="@drawable/ic_baseline_check_box_outline_blank_24"
+            android:title="Free Certificate Course" />
+
+
+        <item
+            android:id="@+id/nav_slideshow"
+            android:icon="@drawable/about"
+            android:title="About">
+
+        </item>
+        <item
+            android:id="@+id/feedbackFragment"
+            android:icon="@drawable/ic_baseline_feedback_24"
+            android:title="Feedback" />
+        <item
+            android:id="@+id/logoutFragment2"
+            android:icon="@drawable/about"
+            android:title="Logout" />
+
+
+    </group>
+
+
+
+</menu>

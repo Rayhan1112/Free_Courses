@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">FreeLearn</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="welcome_to_free_course_links">Welcome To Free Course Links</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="free_learn">Free Learn</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="darkmode">DarkMode</string>
+    <string name="title_activity_web_screen">webScreen</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="about1">The FreeLearn Application is for android users only. In this qpplication the user is supposed to get all the links of free course which he/she can find on the google.</string>
+    <string name="about2">Not only free course but also we have free certification course</string>
+    <string name="keypoints">Key Points:</string>
+    <string name="time_and_money_saving">Time and Money Saving</string>
+    <string name="free_certification_course_available">Free Certification Course Available</string>
+</resources>
