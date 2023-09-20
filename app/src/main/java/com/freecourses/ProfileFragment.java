@@ -2,6 +2,8 @@ package com.freecourses;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,8 +13,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import com.github.ybq.android.spinkit.sprite.Sprite;
@@ -49,9 +53,43 @@ public class ProfileFragment extends Fragment{
         t4 = view.findViewById(R.id.ppass);
         t5=view.findViewById(R.id.college);
         t6=view.findViewById(R.id.course);
+        Fragment fragment = getChildFragmentManager().findFragmentByTag("ProfileFragment");
+
+
+
+
+
+
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle("Login Alert")
+                .setMessage("Please Make Sure That You Have Logged In")
+                .setCancelable(false)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent log = new Intent(getActivity(), login.class);
+                        startActivity(log);
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent log = new Intent(getActivity(), MainActivity.class);
+                        startActivity(log);
+                    }
+                });
 
         ProgressBar progressBar = view.findViewById(R.id.progress);
         Sprite doubleBounce = new Wave();
+
+        View view1=view.findViewById(R.id.SHOW_ALL);
+        if (type.isEmpty()){
+            builder.show();
+            view.setVisibility(View.GONE);
+        }else {
+            Toast.makeText(getActivity(), "Hello", Toast.LENGTH_SHORT).show();
+        }
 
         progressBar.setIndeterminateDrawable(doubleBounce);
         updated=view.findViewById(R.id.pbutton);
@@ -107,4 +145,5 @@ public class ProfileFragment extends Fragment{
 
         return view;
     }
+
 }

@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 
 
-public class Certificate extends Fragment {
+public class Certificate extends Fragment  {
 
 
     public Certificate() {
@@ -22,4 +22,11 @@ public class Certificate extends Fragment {
         return inflater.inflate(R.layout.fragment_certificate, container, false);
     }
 
-}
+
+
+    }
+
+
+
+
+

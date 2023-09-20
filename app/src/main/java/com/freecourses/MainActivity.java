@@ -44,6 +44,9 @@ public class MainActivity extends AppCompatActivity {
     String[] urls=new String[50];
     BroadcastReceiver broadcastReceiver;
     ImageSlider imageSlide;
+    public String type;
+    Intent login;
+    TextView t;
 
 
     @Override
@@ -59,9 +62,6 @@ public class MainActivity extends AppCompatActivity {
 
         broadcastReceiver=new ConnectReceiver();
         registered();
-
-
-
 //----------------All Course Link Here---------------------------------------------------------------
         urls[0]="https://www.learnvern.com/c-programming-tutorial-in-hindi?ref=637e68";
         urls[1]="https://www.learnvern.com/cpp-tutorial?ref=637e68";
@@ -73,19 +73,16 @@ public class MainActivity extends AppCompatActivity {
         urls[6]="https:/www.learnvern.com/mysql-tutorial?ref=637e68";
         urls[7]="https:/www.learnvern.com/sql-server-tutorial?ref=637e68";
         urls[8]="https:/www.learnvern.com/oracle-sql-tutorial?ref=637e68";
-
 //  Layout3 ---------------------------------------------------------------------------------------------------------
         urls[9]="https://www.udemy.com/share/106bqS3@0GDyOjPV-5Ht690nP6TrnOtjKHcPcakop7w1rs09BuZ7-6tMYY7vdXDPyNtJ70T_Ew==/";
         urls[10]="https://www.udemy.com/share/104Vvu3@b5cfJXmuI_g3BF9r9cXNazven97DCmrDx7TTI9vB5UEfx01Mfs80RePx01NyJdY5OA==/";
         urls[11]="https://www.udemy.com/share/106bqS3@Qj3WPRzhOJng30qQpcUUrSnQ_j5TG2mTIMOI0S1DxN1yVxMIrd23-ybiMx5_hgWWYQ==/";
         urls[12]="https://www.udemy.com/share/101vi03@0AozEDMO-DSsBv1VljgLF76o0BOe8u4LNb3OwEcboxiC8GHp4ckDArWnk3NW0WFxkw==/ ";
-
 //Layout4-------------------------------------------------------------------------------------------------------
         urls[13]="https:/www.learnvern.com/android-tutorial?ref=637e68";
         urls[14]="https:/www.learnvern.com/ethical-hacking-course?ref=637e68";
         urls[15]="https:/www.learnvern.com/computer-hardware?ref=637e68";
         urls[16]="https:/www.learnvern.com/computer-networking-course?ref=637e68";
-
 //-------------------------Layout 5--------------------------------------------------------------------
         urls[17]="https:/www.learnvern.com/html5-tutorial?ref=637e68";
         urls[18]="https:/www.learnvern.com/javascript-tutorial-in-hindi?ref=637e68";
@@ -99,7 +96,6 @@ public class MainActivity extends AppCompatActivity {
         urls[25]="https://simpli-web.app.link/e/8CTRtAYEBub";
         urls[26]="https://simpli-web.app.link/e/SoClczEGBub";
         urls[27]="https://simpli-web.app.link/e/lnk4QrbFBub";
-
 //------------------------Web Developement-------------------------------------
         urls[28]="https:/www.learnvern.com/html5-tutorial?ref=637e68";
         urls[29]="https:/www.learnvern.com/javascript-tutorial-in-hindi?ref=637e68";
@@ -112,21 +108,24 @@ public class MainActivity extends AppCompatActivity {
         urls[36]="https:/www.learnvern.com/laravel-tutorial?ref=637e68";
         urls[37]="https:/www.learnvern.com/javascript-tutorial-for-web-designer-in-hindi?ref=637e68";
         urls[38]="https:/www.learnvern.com/jquery-tutorial-in-hindi?ref=637e68";
-
 //        Diploma Courses
         urls[39]="https://alison.com/course/diploma-in-software-testing-revised#l-main-pub";
 
-
-//        Database |
+//       SharedPreference Data
         final SharedPreferences sharedPreferences=getSharedPreferences("Data", Context.MODE_PRIVATE);
-        final String type=sharedPreferences.getString("Name","");
+        type = sharedPreferences.getString("Name1","");
+        login = new Intent(MainActivity.this, login.class);
+        Toast.makeText(this, type, Toast.LENGTH_SHORT).show();
+
+
+
+
+
         setSupportActionBar(binding.appBarMain.toolbar);
         binding.appBarMain.fab.setOnClickListener(view -> {
-
         });
 
-        FirebaseMessaging.getInstance().getToken()
-                .addOnCompleteListener(new OnCompleteListener<String>() {
+        FirebaseMessaging.getInstance().getToken().addOnCompleteListener(new OnCompleteListener<String>() {
                     @Override
                     public void onComplete(@NonNull Task<String> task) {
                         if(!task.isSuccessful()){
@@ -150,6 +149,17 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+
+        Menu menu=navigationView.getMenu();
+        MenuItem menuItem = menu.findItem(R.id.logoutFragment2);
+
+        if (type.isEmpty()){
+            menuItem.setEnabled(false);
+        }else{
+            menuItem.setEnabled(true);
+        }
+
     }
     protected void  registered(){
         if(Build.VERSION.SDK_INT >=  Build.VERSION_CODES.N){
@@ -174,7 +184,6 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this, "DarkMode is On", Toast.LENGTH_SHORT).show();
                 return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -205,24 +214,31 @@ public class MainActivity extends AppCompatActivity {
 
 //Layout3 ----------------------------------------------------------------------------------------------------
         public void card1 (View view){
-        try {
-            Intent i = new Intent(MainActivity.this, webScreen.class);
-            i.putExtra("links",urls[0]);
-            startActivity(i);
-        }catch (Exception e)
-        {
-            e.printStackTrace();
+        if (type.isEmpty()){
+            checkLog();
+        }else {
+            try {
+                Intent i = new Intent(MainActivity.this, webScreen.class);
+                i.putExtra("links", urls[0]);
+                startActivity(i);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
         public void card2 (View view){
-        try {
-            Intent i = new Intent(MainActivity.this, webScreen.class);
-            i.putExtra("links",urls[1]);
-            startActivity(i);
-        }catch(Exception e){
-            e.printStackTrace();
-        }
+            if (type.isEmpty()){
+                checkLog();
+            }else {
+                try {
+                    Intent i = new Intent(MainActivity.this, webScreen.class);
+                    i.putExtra("links", urls[1]);
+                    startActivity(i);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
     }
 
 
@@ -237,172 +253,287 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     public void card3 (View view){
-        try {
-            Intent i = new Intent(MainActivity.this, webScreen.class);
-            i.putExtra("links",urls[2]);
-            startActivity(i);
-        }catch (Exception e)
-        {
-            e.printStackTrace();
+        if (type.isEmpty()){
+            checkLog();
+        }else {
+            try {
+                Intent i = new Intent(MainActivity.this, webScreen.class);
+                i.putExtra("links", urls[2]);
+                startActivity(i);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
     //    Layout2 ----------------------------------------------------------------------------------------------------
     public void card5l1(View view){
-        Intent i = new Intent(MainActivity.this, webScreen.class);
-        i.putExtra("links",urls[4]);
-        startActivity(i);
+        if(type.isEmpty()){
+            checkLog();
+        }else {
+            Intent i = new Intent(MainActivity.this, webScreen.class);
+            i.putExtra("links", urls[4]);
+            startActivity(i);
+        }
     }
 
     public void php(View view){
 
-        Intent i = new Intent(MainActivity.this, webScreen.class);
-        i.putExtra("links",urls[5]);
-        startActivity(i);
+        if(type.isEmpty()){
+            checkLog();
+        }else {
+            Intent i = new Intent(MainActivity.this, webScreen.class);
+            i.putExtra("links", urls[5]);
+            startActivity(i);
+        }
     }
     public void card2l2(View view){
-        Intent i = new Intent(MainActivity.this, webScreen.class);
-        i.putExtra("links",urls[6]);
-        startActivity(i);
+        if(type.isEmpty()){
+            checkLog();
+        }else {
+            Intent i = new Intent(MainActivity.this, webScreen.class);
+            i.putExtra("links", urls[7]);
+            startActivity(i);
+        }
     }
     public void card3l2(View view){
-        Intent i = new Intent(MainActivity.this, webScreen.class);
-        i.putExtra("links",urls[7]);
-        startActivity(i);
+        if(type.isEmpty()){
+            checkLog();
+        }else {
+            Intent i = new Intent(MainActivity.this, webScreen.class);
+            i.putExtra("links", urls[6]);
+            startActivity(i);
+        }
     }
     public void card4l2(View view){
-        Intent i=new Intent(MainActivity.this,webScreen.class);
-        i.putExtra("links",urls[7]);
-        startActivity(i);
+        if(type.isEmpty()){
+            checkLog();
+        }else {
+            Intent i = new Intent(MainActivity.this, webScreen.class);
+            i.putExtra("links", urls[8]);
+            startActivity(i);
+        }
 
     }
 //  Layout3 ---------------------------------------------------------------------------------------------------------
 public void card1l3(View view){
-    Intent i=new Intent(MainActivity.this,webScreen.class);
-    i.putExtra("links",urls[9]);
-    startActivity(i);
+    if(type.isEmpty()){
+        checkLog();
+    }else {
+        Intent i = new Intent(MainActivity.this, webScreen.class);
+        i.putExtra("links", urls[9]);
+        startActivity(i);
+    }
 }
 
 public void card2l3(View view){
-    Intent i=new Intent(MainActivity.this,webScreen.class);
-    i.putExtra("links",urls[10]);
-    startActivity(i);
+    if(type.isEmpty()){
+        checkLog();
+    }else {
+        Intent i = new Intent(MainActivity.this, webScreen.class);
+        i.putExtra("links", urls[10]);
+        startActivity(i);
+    }
     }
 
 public void card3l3(View view){
-    Intent i=new Intent(MainActivity.this,webScreen.class);
-    i.putExtra("links",urls[11]);
-    startActivity(i);
+    if(type.isEmpty()){
+        checkLog();
+    }else {
+        Intent i = new Intent(MainActivity.this, webScreen.class);
+        i.putExtra("links", urls[11]);
+        startActivity(i);
+    }
     }
 public void card4l3(View view){
-    Intent i=new Intent(MainActivity.this,webScreen.class);
-    i.putExtra("links",urls[12]);
-    startActivity(i);
+    if(type.isEmpty()){
+        checkLog();
+    }else {
+        Intent i = new Intent(MainActivity.this, webScreen.class);
+        i.putExtra("links", urls[13]);
+        startActivity(i);
+    }
 
 }
 //Layout4-------------------------------------------------------------------------------------------------------
 public void card1l4(View view){
-    Intent i=new Intent(MainActivity.this,webScreen.class);
-    i.putExtra("links",urls[13]);
-    startActivity(i);
+    if(type.isEmpty()){
+        checkLog();
+    }else {
+        Intent i = new Intent(MainActivity.this, webScreen.class);
+        i.putExtra("links", urls[14]);
+        startActivity(i);
+    }
 }
 
     public void card2l4(View view){
-        Intent i=new Intent(MainActivity.this,webScreen.class);
-        i.putExtra("links",urls[14]);
-        startActivity(i);
+        if(type.isEmpty()){
+            checkLog();
+        }else {
+            Intent i = new Intent(MainActivity.this, webScreen.class);
+            i.putExtra("links", urls[14]);
+            startActivity(i);
+        }
     }
 
 
     public void card3l4(View view){
-        Intent i=new Intent(MainActivity.this,webScreen.class);
-        i.putExtra("links",urls[15]);
-        startActivity(i);
+        if(type.isEmpty()){
+            checkLog();
+        }else {
+            Intent i = new Intent(MainActivity.this, webScreen.class);
+            i.putExtra("links", urls[15]);
+            startActivity(i);
+        }
     }
     public void card4l4(View view){
-        Intent i=new Intent(MainActivity.this,webScreen.class);
-        i.putExtra("links",urls[15]);
-        startActivity(i);
+        if(type.isEmpty()){
+            checkLog();
+        }else {
+            Intent i = new Intent(MainActivity.this, webScreen.class);
+            i.putExtra("links", urls[15]);
+            startActivity(i);
+        }
 
     }
 
     //-------------------------WEB DEVELOPMENT--------------------------------------------------------------------
     public void webcard3(View view){
-        Intent i=new Intent(MainActivity.this,webScreen.class);
-        i.putExtra("links",urls[28]);
-        startActivity(i);
+        if(type.isEmpty()){
+            checkLog();
+        }else {
+            Intent i = new Intent(MainActivity.this, webScreen.class);
+            i.putExtra("links", urls[28]);
+            startActivity(i);
+        }
     }
     public void webcard5(View view){
-        Intent i=new Intent(MainActivity.this,webScreen.class);
-        i.putExtra("links",urls[29]);
-        startActivity(i);
+        if(type.isEmpty()){
+            checkLog();
+        }else {
+            Intent i = new Intent(MainActivity.this, webScreen.class);
+            i.putExtra("links", urls[29]);
+            startActivity(i);
+        }
     }
     public void webcard6(View view){
-        Intent i=new Intent(MainActivity.this,webScreen.class);
-        i.putExtra("links",urls[30]);
-        startActivity(i);
+        if(type.isEmpty()){
+            checkLog();
+        }else {
+            Intent i = new Intent(MainActivity.this, webScreen.class);
+            i.putExtra("links", urls[30]);
+            startActivity(i);
+        }
     }
     public void webcard4(View view){
-        Intent i=new Intent(MainActivity.this,webScreen.class);
-        i.putExtra("links",urls[31]);
-        startActivity(i);
+        if(type.isEmpty()){
+            checkLog();
+        }else {
+            Intent i = new Intent(MainActivity.this, webScreen.class);
+            i.putExtra("links", urls[31]);
+            startActivity(i);
+        }
     }
     public void webcard2(View view){
-        Intent i=new Intent(MainActivity.this,webScreen.class);
-        i.putExtra("links",urls[32]);
-        startActivity(i);
+        if(type.isEmpty()){
+            checkLog();
+        }else {
+            Intent i = new Intent(MainActivity.this, webScreen.class);
+            i.putExtra("links", urls[32]);
+            startActivity(i);
+        }
     }
     public void webcard1(View view){
-        Intent i=new Intent(MainActivity.this,webScreen.class);
-        i.putExtra("links",urls[33]);
-        startActivity(i);
+        if(type.isEmpty()){
+            checkLog();
+        }else {
+            Intent i = new Intent(MainActivity.this, webScreen.class);
+            i.putExtra("links", urls[30]);
+            startActivity(i);
+        }
     }
     public void webcard7(View view) {
-        Intent i=new Intent(MainActivity.this,webScreen.class);
-        i.putExtra("links",urls[34]);
-        startActivity(i);
+        if(type.isEmpty()){
+            checkLog();
+        }else {
+            Intent i = new Intent(MainActivity.this, webScreen.class);
+            i.putExtra("links", urls[34]);
+            startActivity(i);
+        }
     }
     public void webcard8(View view) {
-        Intent i=new Intent(MainActivity.this,webScreen.class);
-        i.putExtra("links",urls[35]);
-        startActivity(i);
+        if(type.isEmpty()){
+            checkLog();
+        }else {
+            Intent i = new Intent(MainActivity.this, webScreen.class);
+            i.putExtra("links", urls[35]);
+            startActivity(i);
+        }
     }
     public void webcard9(View view) {
-        Intent i=new Intent(MainActivity.this,webScreen.class);
-        i.putExtra("links",urls[36]);
-        startActivity(i);
+        if(type.isEmpty()){
+            checkLog();
+        }else {
+            Intent i = new Intent(MainActivity.this, webScreen.class);
+            i.putExtra("links", urls[36]);
+            startActivity(i);
+        }
     }
     public void webcard10(View view) {
-        Intent i=new Intent(MainActivity.this,webScreen.class);
-        i.putExtra("links",urls[37]);
-        startActivity(i);
+        if(type.isEmpty()){
+            checkLog();
+        }else {
+            Intent i = new Intent(MainActivity.this, webScreen.class);
+            i.putExtra("links", urls[37]);
+            startActivity(i);
+        }
     }
     public void webcard11(View view) {
-        Intent i=new Intent(MainActivity.this,webScreen.class);
-        i.putExtra("links",urls[38]);
-        startActivity(i);
+        if(type.isEmpty()){
+            checkLog();
+        }else {
+            Intent i = new Intent(MainActivity.this, webScreen.class);
+            i.putExtra("links", urls[38]);
+            startActivity(i);
+        }
     }
 
 
         //------------------------------------FithLayout----------------------------------------------------------------
     public void card1l5(View view) {
-        Intent i=new Intent(MainActivity.this,webScreen.class);
-        i.putExtra("links",urls[17]);
-        startActivity(i);
+        if(type.isEmpty()){
+            checkLog();
+        }else {
+            Intent i = new Intent(MainActivity.this, webScreen.class);
+            i.putExtra("links", urls[17]);
+            startActivity(i);
+        }
     }
     public void card2l5(View view) {
-        Intent i=new Intent(MainActivity.this,webScreen.class);
-        i.putExtra("links",urls[18]);
-        startActivity(i);
+        if(type.isEmpty()){
+            checkLog();
+        }else {
+            Intent i = new Intent(MainActivity.this, webScreen.class);
+            i.putExtra("links", urls[18]);
+            startActivity(i);
+        }
     }
     public void card3l5(View view) {
-        Intent i=new Intent(MainActivity.this,webScreen.class);
-        i.putExtra("links",urls[19]);
-        startActivity(i);
+        if(type.isEmpty()){
+            checkLog();
+        }else {
+            Intent i = new Intent(MainActivity.this, webScreen.class);
+            i.putExtra("links", urls[19]);
+            startActivity(i);
+        }
     }
     public void card4l5(View view) {
-        Intent i=new Intent(MainActivity.this,webScreen.class);
-        i.putExtra("links",urls[20]);
-        startActivity(i);
+        if(type.isEmpty()){
+            checkLog();
+        }else {
+            Intent i = new Intent(MainActivity.this, webScreen.class);
+            i.putExtra("links", urls[20]);
+            startActivity(i);
+        }
     }
 
 
@@ -413,9 +544,8 @@ public void card1l4(View view){
         editor.clear();
         editor.commit();
         Toast.makeText(MainActivity.this, "Logout Sucessfully", Toast.LENGTH_SHORT).show();
-        Intent i=new Intent(MainActivity.this,login.class);
+        Intent i=new Intent(this, MainActivity.class);
         startActivity(i);
-        finish();
 
     }
 
@@ -434,39 +564,67 @@ public void card1l4(View view){
 
     }
     public void certi3(View view) {
-        Intent i=new Intent(MainActivity.this,webScreen.class);
-        i.putExtra("links",urls[21]);
-        startActivity(i);
+        if(type.isEmpty()){
+            checkLog();
+        }else {
+            Intent i = new Intent(MainActivity.this, webScreen.class);
+            i.putExtra("links", urls[21]);
+            startActivity(i);
+        }
     }
     public void certi4(View view) {
-        Intent i=new Intent(MainActivity.this,webScreen.class);
-        i.putExtra("links",urls[22]);
-        startActivity(i);
+        if(type.isEmpty()){
+            checkLog();
+        }else {
+            Intent i = new Intent(MainActivity.this, webScreen.class);
+            i.putExtra("links", urls[22]);
+            startActivity(i);
+        }
     }
     public void certi5(View view) {
-        Intent i=new Intent(MainActivity.this,webScreen.class);
-        i.putExtra("links",urls[23]);
-        startActivity(i);
+        if(type.isEmpty()){
+            checkLog();
+        }else {
+            Intent i = new Intent(MainActivity.this, webScreen.class);
+            i.putExtra("links", urls[23]);
+            startActivity(i);
+        }
     }
     public void certi6(View view) {
-        Intent i=new Intent(MainActivity.this,webScreen.class);
-        i.putExtra("links",urls[24]);
-        startActivity(i);
+        if(type.isEmpty()){
+            checkLog();
+        }else {
+            Intent i = new Intent(MainActivity.this, webScreen.class);
+            i.putExtra("links", urls[24]);
+            startActivity(i);
+        }
     }
     public void certi7(View view) {
-        Intent i=new Intent(MainActivity.this,webScreen.class);
-        i.putExtra("links",urls[25]);
-        startActivity(i);
+        if(type.isEmpty()){
+            checkLog();
+        }else {
+            Intent i = new Intent(MainActivity.this, webScreen.class);
+            i.putExtra("links", urls[25]);
+            startActivity(i);
+        }
     }
     public void certi8(View view) {
-        Intent i=new Intent(MainActivity.this,webScreen.class);
-        i.putExtra("links",urls[26]);
-        startActivity(i);
+        if(type.isEmpty()){
+            checkLog();
+        }else {
+            Intent i = new Intent(MainActivity.this, webScreen.class);
+            i.putExtra("links", urls[26]);
+            startActivity(i);
+        }
     }
     public void certi9(View view) {
-        Intent i=new Intent(MainActivity.this,webScreen.class);
-        i.putExtra("links",urls[27]);
-        startActivity(i);
+        if(type.isEmpty()){
+            checkLog();
+        }else {
+            Intent i = new Intent(MainActivity.this, webScreen.class);
+            i.putExtra("links", urls[27]);
+            startActivity(i);
+        }
     }
 
 
@@ -479,10 +637,22 @@ public void card1l4(View view){
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                     finish();
+                        finish();
                     }
                 })
                         .setNegativeButton("No" ,null).show();
+    }
+    void checkLog() {
+        new AlertDialog.Builder(this).setMessage("Please Log In ").setCancelable(false)
+                .setTitle(R.string.app_name)
+                .setIcon(R.drawable.logo)
+                .setPositiveButton("Login", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        startActivity(login);
+                    }
+                })
+                .setNegativeButton("Cancel", null).show();
     }
 
 

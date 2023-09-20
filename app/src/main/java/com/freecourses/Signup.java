@@ -6,7 +6,6 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -32,19 +31,17 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 public class Signup extends AppCompatActivity {
     EditText nm, mail,pwd,userdata,college,course;
     TextView text;
     Button reg,button,updated;
     FirebaseDatabase db;
     DatabaseReference reference;
-    EditText t1,t2,t3,t4;
     FirebaseFirestore firestore;
     String userid;
     FirebaseAuth auth;
+    public  String type;
+    public SharedPreferences sharedPreferences;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -75,8 +72,10 @@ public class Signup extends AppCompatActivity {
 
         Animation myanimation = AnimationUtils.loadAnimation(Signup.this,R.anim.fade_in);
         text.startAnimation(myanimation);
-        final SharedPreferences sharedPreferences = getSharedPreferences("Data", Context.MODE_PRIVATE);
-        final String type = sharedPreferences.getString("Name", "");
+
+        sharedPreferences = getSharedPreferences("Data", Context.MODE_PRIVATE);
+        type = sharedPreferences.getString("Name", "");
+        Toast.makeText(this, ""+type, Toast.LENGTH_SHORT).show();
         if (type.isEmpty()) {
 
         } else {
@@ -85,16 +84,15 @@ public class Signup extends AppCompatActivity {
             finish();
 
         }
-
         auth=FirebaseAuth.getInstance();
         firestore=FirebaseFirestore.getInstance();
+
 
         nm.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
                 // Not used in this example
             }
-
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 // Not used in this example
@@ -135,11 +133,6 @@ public class Signup extends AppCompatActivity {
                 }
             }
         });
-
-
-
-
-
     }
 
 
@@ -151,8 +144,6 @@ public class Signup extends AppCompatActivity {
         String uname1=userdata.getText().toString();
         String clg=college.getText().toString();
         String co=course.getText().toString();
-
-
 
         if (name1.isEmpty())
         {
@@ -191,8 +182,12 @@ public class Signup extends AppCompatActivity {
             });
         reference.child(uname1).setValue(users).addOnCompleteListener(task -> {
 
-                Toast.makeText(Signup.this, "Registered Sucessfully", Toast.LENGTH_SHORT).show();
+            sharedPreferences = getSharedPreferences("Data", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor=sharedPreferences.edit();
+            editor.putString("Name",name1);
+            editor.putString("Password",pwdd1);
 
+            Toast.makeText(Signup.this, "Registered Sucessfully", Toast.LENGTH_SHORT).show();
                 Intent i = new Intent(Signup.this, login.class);
                 startActivity(i);
                 finish();
@@ -203,17 +198,14 @@ public class Signup extends AppCompatActivity {
 
 
     }
-    public boolean isvalidemail(final String email){
-        Pattern mpattern;
-        Matcher matcher;
-        final String emailpattern="[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
-        mpattern=Pattern.compile(emailpattern);
-        matcher=mpattern.matcher(email);
-        return matcher.matches();
-    }
-    private boolean isConnected(){
-        ConnectivityManager manager=(ConnectivityManager) getApplication().getSystemService(Context.CONNECTIVITY_SERVICE);
-        return manager.getActiveNetwork() !=null && manager.getActiveNetworkInfo().isConnectedOrConnecting();
-    }
+//    public boolean isvalidemail(final String email){
+//        Pattern mpattern;
+//        Matcher matcher;
+//        final String emailpattern="[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+//        mpattern=Pattern.compile(emailpattern);
+//        matcher=mpattern.matcher(email);
+//        return matcher.matches();
+//    }
+
 
 }

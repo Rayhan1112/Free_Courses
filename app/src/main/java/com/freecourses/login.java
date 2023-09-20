@@ -1,11 +1,13 @@
 package com.freecourses;
 
 import android.annotation.SuppressLint;
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -26,12 +28,14 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 public class login extends AppCompatActivity {
+    public String type;
     EditText umail, upwd;
     Button clicklogin, newac;
     TextView e2;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference myref;
     FirebaseAuth auth;
+    BroadcastReceiver broadcastReceiver;
 
 
     @SuppressLint("MissingInflatedId")
@@ -40,28 +44,6 @@ public class login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
 
-
-        if(!isConnected()){
-            new android.app.AlertDialog.Builder(this).setMessage("No Internet Connection").setCancelable(false)
-                    .setPositiveButton("Retry", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            if (!isConnected()) {
-                                Toast.makeText(login.this, "Make Sure That Internet Is Connected", Toast.LENGTH_SHORT).show();
-                            }else{
-                                Intent intent = new Intent(getApplicationContext(), login.class);
-                                startActivity(intent);
-
-                            }
-                        }
-                    })
-                    .setNegativeButton("Exit", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            finish();
-                        }
-                    }).show();
-        }
 
         setContentView(R.layout.activity_login);
         umail = findViewById(R.id.mail);
@@ -87,7 +69,7 @@ public class login extends AppCompatActivity {
         });
 
         final SharedPreferences sharedPreferences = getSharedPreferences("Data", Context.MODE_PRIVATE);
-        final String type = sharedPreferences.getString("Name", "");
+        type = sharedPreferences.getString("Name", "");
 
 
         if (type.isEmpty()) {
@@ -157,7 +139,7 @@ public class login extends AppCompatActivity {
                 }else {
                     e2.setText("");
 
-//                    auth.createUserWithEmailAndPassword(email,pass1).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+//                    auth.signInWithEmailAndPassword(email,pass1).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
 //                        @Override
 //                        public void onComplete(@NonNull Task<AuthResult> task) {
 //                            if (task.isSuccessful()){
@@ -178,12 +160,14 @@ public class login extends AppCompatActivity {
                             String p1 = snapshot.child(email).child("pass").getValue(String.class);
                             if (pass1.equals(p1)) {
                                 //For Skip login Activity
+
                                 SharedPreferences.Editor editor = sharedPreferences.edit();
                                 String nm = umail.getText().toString();
                                 String pass1 = upwd.getText().toString();
-                                editor.putString("Name", nm);
+                                editor.putString("Name1", nm);
                                 editor.putString("Password", pass1);
-                                editor.commit();
+//                                editor.commit();
+                                
                                 Toast.makeText(login.this, "Log In Sucessfully", Toast.LENGTH_SHORT).show();
                                 Intent i = new Intent(login.this, MainActivity.class);
                                 startActivity(i);
@@ -213,6 +197,11 @@ public class login extends AppCompatActivity {
                 }
         }
         });
+    }
+    protected void  registered(){
+        if(Build.VERSION.SDK_INT >=  Build.VERSION_CODES.N){
+            registerReceiver(broadcastReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
+        }
     }
     private boolean isConnected(){
         ConnectivityManager manager=(ConnectivityManager) getApplication().getSystemService(Context.CONNECTIVITY_SERVICE);
